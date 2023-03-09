@@ -1,0 +1,103 @@
+#draft of reentry simulation
+#database for answers 
+answer_yes = ["Yes", "Y", "yes", "y"] 
+answer_no = ["No", "N", "no", "n"] 
+
+#intro
+print("""
+Hello and welcome to the reentry simulation.
+Please take your time reading through each scenario before answering.
+There may be a specific way to answer each question so please be mindful of how you answer a question.
+Are you ready to begin?""")
+
+#loops until yes or no is answered
+while True:
+    answer = input(">>")
+    if answer in answer_yes:
+        print ("Let's continue.")
+        break
+    if answer in answer_no:
+        print('Thank you for checking out the game.')
+        exit()
+    else:
+        print ("Please try again.")
+    
+#identities database
+def opt_a():
+    print('\033[4m' + 'John'+ '\033[0m')
+    print('\033[1m' + 'Criminal Background:' +'\033[0m' ' You served 20 years in prison for murder, possession of a firearm and past drug conviction.')
+    print('\033[1m' + 'Education:' +'\033[0m'' GED in prison.')
+    print('\033[1m' + 'You have the following:' +'\033[0m' ' Social Security Card.')
+    print('\033[1m' + 'Financials:' +'\033[0m' ' Money on hand: $100 saved in prison. Unemployed.')
+    print('\033[1m' + 'Housing Situation:' +'\033[0m' ' Transitional')
+    
+def opt_b():
+    print('\033[4m' + 'Sam' + '\033[0m')
+    print('\033[1m' + 'Criminal Background:' +'\033[0m'' You served 3 years in prison for breaking and entering.')
+    print('\033[1m' + 'Education: ' +'\033[0m'' GED')
+    print('\033[1m' + 'You have the following: ' +'\033[0m'' Social Security Card and Birth Certificate')
+    print('\033[1m' + 'Financials: ' +'\033[0m'' Physical disability - $710 a month. First check available Week 2, pick up at Social Services.')
+    print('\033[1m' + 'Money on hand: ' +'\033[0m'' $20')
+    print('\033[1m' + 'Housing Situation:' +'\033[0m''  With significant other and their two children, met through a prison pen pal.')
+
+def invalid_opt():
+    print("Invalid choice, please try again.")
+
+options = {"a": ["John", opt_a], "b": ["Sam", opt_b]}
+print("\n Please pick your identity by typing either A or B on the keyboard.\n")
+for option in options:
+    print(option+") "+options.get(option) [0])
+
+choice = input("Please select your identity. >> ")
+
+val = options.get(choice)
+if val is not None:
+    action = val[1]
+else:
+    action = invalid_opt
+
+print('\nGet acquanted with yourself and read the General Instructions. Take all the time you need.\n')
+
+#prints information on identities
+
+if choice == "a":
+    print(opt_a())
+elif choice == "b":
+    print(opt_b())
+    
+#general rules that apply to everyone
+print('\nGeneral Instructions\n')
+print('1. You may seek out seasonal or temporary work. You will receive $25 the first job and $25 the second job.')
+
+#general first scene
+print("\nLet's get started. Ready?\n")
+
+firstScene = input(">> ")
+if firstScene in answer_yes:
+    print("\n It's Week 1: What would you like to do first? \n")
+elif firstScene in answer_no:
+    print("\n Thanks for making it this far! Try again soon.\n")
+else:
+    print("\n Please answer yes or no.")
+   
+#week 1 for john options
+#how to get code to recognize a or b was chosen above in this next part?
+def john1():
+  print("You have chosen to attend treatment. This costs $15.")
+  
+def john2():
+  print("You have chosen to purchase personal items or food for $25.")
+  
+johnWeek1 = {"a": ["Attend treatment, costs $15", john1], "b": ["Purchase personal items / food, costs $25", john2]}
+  
+print("\n Using your keyboard, please select what you would like to do first.\n")
+  
+for option in johnWeek1:
+  print(option+") "+johnWeek1.get(option) [0])
+
+choiceJohn = input("What are you doing first? >> ")
+
+if choiceJohn == "a":
+    print(john1())
+elif choiceJohn == "b":
+    print(john2())
